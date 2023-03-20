@@ -1,0 +1,73 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package statement_demo;
+
+/**
+ *
+ * @author Pragnesh
+ */
+public class Statement_Demo {
+
+      static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
+   static final String DB_URL = "jdbc:mysql://localhost:3306/paga";
+
+   //  Database credentials
+   static final String USER = "root";
+   static final String PASS = "";
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         // JDBC driver name and database URL
+ 
+  
+   try{
+      //STEP 2: Register JDBC driver
+      Class.forName("com.mysql.jdbc.Driver");
+
+      //STEP 3: Open a connection
+      System.out.println("Connecting to database...");
+      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+      //STEP 4: Execute a query
+      System.out.println("Creating statement...");
+      stmt = conn.createStatement();
+      String sql = "select * from name";
+      
+      // Let us check if it returns a true Result Set or not.
+      Boolean ret = stmt.execute(sql);
+      System.out.println("Return value is : " + ret.toString() );
+
+      // Let us update age of the record with ID = 103;
+      String sql1 = "update name set id=999 where id=360";
+ 
+       int rows = stmt.executeUpdate(sql1);
+    System.out.println("Rows impacted : " + rows );
+
+      // Let us select all the records and display them.
+      sql = "SELECT std_id,name,city FROM std ";
+      ResultSet rs = stmt.executeQuery(sql);
+
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+         //Retrieve by column name
+         int  id  = rs.getInt(1);
+         String name = rs.getString(2);
+          String city = rs.getString(3);
+
+         //Display values
+         System.out.println("Student ID: " + id);
+         System.out.println(", Student Name: " + name);
+         System.out.println(", Department Name: " + city);
+      }
+      //STEP 6: Clean-up environment
+      rs.close();
+      stmt.close();
+      conn.close();
+   }catch(Exception e){}
+        // TODO code application logic here
+    }
+    
+}
