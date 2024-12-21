@@ -344,19 +344,21 @@ section.about {
 
 
 /* ===== SKILLS =====*/
+/* General Container */
 .skills-container {
   row-gap: 2rem;
   text-align: center;
 }
 
-
-
+/* Subtitle and Text */
 .skills-subtitle {
   margin-bottom: var(--mb-2);
 }
 .skills-text {
   margin-bottom: var(--mb-4);
 }
+
+/* Skill Data Block */
 .skills-data {
   display: flex;
   justify-content: space-between;
@@ -367,34 +369,36 @@ section.about {
   margin-bottom: var(--mb-4);
   border-radius: 0.5rem;
   box-shadow: 0 4px 25px rgba(14, 36, 49, 0.15);
-  transition: 1s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.skills-icon {
+.skills-data:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 30px rgba(14, 36, 49, 0.2);
+}
+
+/* Skill Icons */
+.skills-icon,
+img.man-icons {
   width: 2rem;
   font-size: 2rem;
   margin-right: var(--mb-2);
   color: var(--first-color);
 }
-img.man-icons {
-  font-size: 2rem;
-  margin-right: var(--mb-2);
-  color: var(--first-color);
-}
+
+/* Skill Names */
 .skills-names {
   display: flex;
   align-items: center;
 }
 
-
 .skills-names:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
   transform: scale(1.1);
-  transition: 1s ease;
+  transition: transform 0.3s ease;
 }
 
+/* Skill Progress Bar */
 .skills-bar {
   position: absolute;
   left: 0;
@@ -404,6 +408,8 @@ img.man-icons {
   border-radius: 0.5rem;
   z-index: var(--z-back);
 }
+
+/* Individual Skill Widths */
 .skills-html {
   width: 75%;
 }
@@ -431,9 +437,27 @@ img.man-icons {
 .skills-node {
   width: 85%;
 }
+
+/* Skill Images */
 .skills-img {
   border-radius: 0.5rem;
 }
+.skills-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skills-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.skills-name {
+  font-size: 1rem;
+  font-weight: var(--font-semi);
+}
+
 /* ===== Projects =====*/
 .card {
   /* Add shadows to create the "card" effect */
